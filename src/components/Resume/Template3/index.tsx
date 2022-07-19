@@ -12,12 +12,15 @@ import {
   TrophyFilled,
   ZhihuCircleFilled,
   BookFilled,
+  HomeOutlined,
 } from '@ant-design/icons';
 import _ from 'lodash-es';
 import { getLocale } from '@/locale';
 import { getDefaultTitleNameMap } from '@/datas/constant';
 import { ResumeConfig, ThemeConfig } from '../../types';
 import './index.less';
+import { createFromIconfontCN } from '@ant-design/icons/es';
+import { Avatar } from '@/components/Avatar';
 
 type Props = {
   value: ResumeConfig;
@@ -87,6 +90,10 @@ export const Template3: React.FC<Props> = props => {
 
   const paperList = _.get(value, 'paperList');
 
+  const IconFont = createFromIconfontCN({
+    scriptUrl: './iconfont.js',
+  });
+
   /** 自我介绍 */
   const aboutme = _.split(_.get(value, ['aboutme', 'aboutme_desc']), '\n');
 
@@ -95,76 +102,126 @@ export const Template3: React.FC<Props> = props => {
       <div className="basic-info">
         {/* <CardWrapper title="个人信息" className="profile" color={theme.color}> */}
         <div className="profile">
-          {profile?.name && <div className="name">{profile.name}</div>}
-          <div className="profile-list">
-            {profile?.mobile && (
-              <div className="mobile">
-                <PhoneFilled style={{ color: theme.color, opacity: 0.85 }} />
-                {profile.mobile}
-              </div>
-            )}
-            {profile?.email && (
-              <div className="email">
-                <MailFilled style={{ color: theme.color, opacity: 0.85 }} />
-                {profile.email}
-              </div>
-            )}
-            {profile?.github && (
-              <div className="github">
-                <GithubFilled style={{ color: theme.color, opacity: 0.85 }} />
-                <span
-                  style={{ cursor: 'pointer' }}
-                  onClick={() => {
-                    window.open(profile.github);
-                  }}
-                >
-                  {profile.github}
-                </span>
-              </div>
-            )}
-            {profile?.zhihu && (
-              <div className="github">
-                <ZhihuCircleFilled
-                  style={{ color: theme.color, opacity: 0.85 }}
-                />
-                <span
-                  style={{ cursor: 'pointer' }}
-                  onClick={() => {
-                    window.open(profile.zhihu);
-                  }}
-                >
-                  {profile.zhihu}
-                </span>
-              </div>
-            )}
-            {profile?.workExpYear && (
-              <div className="work-exp-year">
-                <ScheduleFilled style={{ color: theme.color, opacity: 0.85 }} />
-                <span>
-                  {i18n.get('工作经验')}: {profile.workExpYear}
-                </span>
-              </div>
-            )}
-            {profile?.workPlace && (
-              <div className="work-place">
-                <EnvironmentFilled
-                  style={{ color: theme.color, opacity: 0.85 }}
-                />
-                <span>
-                  {i18n.get('工作地')}: {profile.workPlace}
-                </span>
-              </div>
-            )}
-            {profile?.positionTitle && (
-              <div className="expect-job">
-                <HeartFilled style={{ color: theme.color, opacity: 0.85 }} />
-                <span>
-                  {i18n.get('职位')}: {profile.positionTitle}
-                </span>
-              </div>
-            )}
+          <div className="profile-info">
+            {profile?.name && <div className="name">{profile.name}</div>}
+            <div className="profile-list">
+              {profile?.mobile && (
+                <div className="mobile">
+                  <PhoneFilled style={{ color: theme.color, opacity: 0.85 }} />
+                  电话: {profile.mobile}
+                </div>
+              )}
+              {profile?.email && (
+                <div className="email">
+                  <MailFilled style={{ color: theme.color, opacity: 0.85 }} />
+                  邮箱: {profile.email}
+                </div>
+              )}
+              {profile?.github && (
+                <div className="github">
+                  <GithubFilled style={{ color: theme.color, opacity: 0.85 }} />
+                  Github:&nbsp;
+                  <span
+                    style={{ cursor: 'pointer' }}
+                    onClick={() => {
+                      window.open('https://' + profile.github);
+                    }}
+                  >
+                    {profile.github}
+                  </span>
+                </div>
+              )}
+              {profile?.zhihu && (
+                <div className="github">
+                  <ZhihuCircleFilled
+                    style={{ color: theme.color, opacity: 0.85 }}
+                  />
+                  <span
+                    style={{ cursor: 'pointer' }}
+                    onClick={() => {
+                      window.open('https://' + profile.zhihu);
+                    }}
+                  >
+                    {profile.zhihu}
+                  </span>
+                </div>
+              )}
+              {profile?.homepage && (
+                <div className="github">
+                  <IconFont
+                    type="icon-homepage_fill"
+                    style={{ color: theme.color, opacity: 0.85 }}
+                  />
+                  学术主页:&nbsp;
+                  <span
+                    style={{ cursor: 'pointer' }}
+                    onClick={() => {
+                      window.open('https://' + profile.homepage);
+                    }}
+                  >
+                    {profile.homepage}
+                  </span>
+                </div>
+              )}
+              {profile?.blog && (
+                <div className="github">
+                  <IconFont
+                    type="icon-buywebhostingstep1domain"
+                    style={{ color: theme.color, opacity: 0.85 }}
+                  />
+                  技术博客:&nbsp;
+                  <span
+                    style={{ cursor: 'pointer' }}
+                    onClick={() => {
+                      window.open('https://' + profile.blog);
+                    }}
+                  >
+                    {profile.blog}
+                  </span>
+                </div>
+              )}
+              {profile?.workExpYear && (
+                <div className="work-exp-year">
+                  <ScheduleFilled
+                    style={{ color: theme.color, opacity: 0.85 }}
+                  />
+                  <span>
+                    {i18n.get('工作经验')}: {profile.workExpYear}
+                  </span>
+                </div>
+              )}
+              {profile?.workPlace && (
+                <div className="work-place">
+                  <EnvironmentFilled
+                    style={{ color: theme.color, opacity: 0.85 }}
+                  />
+                  <span>
+                    {i18n.get('工作地')}: {profile.workPlace}
+                  </span>
+                </div>
+              )}
+              {profile?.positionTitle && (
+                <div className="expect-job">
+                  <HeartFilled style={{ color: theme.color, opacity: 0.85 }} />
+                  <span>
+                    {i18n.get('职位')}: {profile.positionTitle}
+                  </span>
+                </div>
+              )}
+            </div>
           </div>
+
+          {/* 头像 */}
+          {!value?.avatar?.hidden && (
+            <Avatar
+              avatarSrc={value?.avatar?.src}
+              className="avatar"
+              shape={value?.avatar?.shape}
+              size={value?.avatar?.size}
+            />
+          )}
         </div>
+
         {/* </CardWrapper> */}
         {/* 教育背景 */}
         {educationList?.length ? (
@@ -228,7 +285,11 @@ export const Template3: React.FC<Props> = props => {
                     />
                     <b className="info-name">{work.work_name}</b>
                     <a className="sub-info" href={work.visit_link}>
-                      {i18n.get('访问链接')}
+                      <IconFont
+                        type="icon-link"
+                        style={{ color: '#ffc107', marginRight: '2px' }}
+                      />
+                      {work.visit_link}
                     </a>
                   </div>
                   {work.work_desc && <div>{work.work_desc}</div>}

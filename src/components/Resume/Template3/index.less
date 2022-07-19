@@ -28,11 +28,11 @@
 
   // 布局位置
   .basic-info {
-    padding: 24px 18px 24px 24px;
+    padding: 0px 18px 20px 24px;
   }
 
   .main-info {
-    padding: 24px 24px 32px 32px;
+    padding: 0 24px 32px 32px;
     background: #fff;
   }
 
@@ -40,6 +40,7 @@
   .ant-ribbon {
     height: 24px;
     line-height: 24px;
+    margin-top:-15px;
   }
 
   .section-title {
@@ -52,7 +53,7 @@
   }
 
   .basic-info .section {
-    padding-top: 28px;
+    padding-top: 8px;
     border-radius: 0;
   }
   .ant-ribbon-wrapper:not(:last-of-type) .ant-card-bordered {
@@ -94,10 +95,10 @@
 
   // basic-info 内容样式
   .basic-info .avatar {
-    margin: 12px auto;
     display: block;
     width: 84px;
-    height: 84px;
+    height: auto;
+    margin-right: 20px;
   }
 
   .basic-info .name {
@@ -107,6 +108,10 @@
   }
 
   .basic-info .profile {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+
     margin-bottom: 16px;
 
     .profile-list {
@@ -170,7 +175,7 @@
 
   .basic-info .education-item {
     &:not(:first-of-type) {
-      margin-top: 8px;
+      margin-top: 2px;
     }
   }
 

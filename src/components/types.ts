@@ -17,6 +17,8 @@ export type ResumeConfig = {
     zhihu?: string;
     /** 工作经验 xx 年 */
     workExpYear?: string;
+    homepage?: string;
+    blog?: string;
     /** 工作地 */
     workPlace?: string;
     /** 职位 */
