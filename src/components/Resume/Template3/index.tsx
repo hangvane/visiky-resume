@@ -1,16 +1,17 @@
 import React from 'react';
-import { Rate, Tag, Badge, Card } from 'antd';
+import { Badge, Card, Rate, Tag } from 'antd';
 import {
-  PhoneFilled,
-  MailFilled,
-  GithubFilled,
-  ZhihuCircleFilled,
-  TrophyFilled,
   CheckCircleFilled,
-  ScheduleFilled,
-  EnvironmentFilled,
-  HeartFilled,
   CrownFilled,
+  EnvironmentFilled,
+  GithubFilled,
+  HeartFilled,
+  MailFilled,
+  PhoneFilled,
+  ScheduleFilled,
+  TrophyFilled,
+  ZhihuCircleFilled,
+  BookFilled,
 } from '@ant-design/icons';
 import _ from 'lodash-es';
 import { getLocale } from '@/locale';
@@ -83,6 +84,8 @@ export const Template3: React.FC<Props> = props => {
 
   /** 作品 */
   const workList = _.get(value, 'workList');
+
+  const paperList = _.get(value, 'paperList');
 
   /** 自我介绍 */
   const aboutme = _.split(_.get(value, ['aboutme', 'aboutme_desc']), '\n');
@@ -282,9 +285,41 @@ export const Template3: React.FC<Props> = props => {
                   <b className="info-name">{award.award_info}</b>
                   {award.award_time && (
                     <span className="sub-info award-time">
-                      ({award.award_time})
+                      {award.award_time}
                     </span>
                   )}
+                </div>
+              );
+            })}
+          </CardWrapper>
+        ) : null}
+        {paperList?.length ? (
+          <CardWrapper
+            // title={i18n.get('个人作品')}
+            title={'科研经历'}
+            className="section section-work"
+            color={theme.color}
+          >
+            {paperList.map((paper, idx) => {
+              return (
+                <div key={idx.toString()}>
+                  <div
+                    style={{
+                      wordBreak: 'break-all',
+                      justifyContent: 'space-between',
+                    }}
+                  >
+                    <BookFilled
+                      style={{ color: '#ffc107', marginRight: '8px' }}
+                    />
+                    <b className="info-name" style={{ fontFamily: undefined }}>
+                      {paper.paper_name}
+                    </b>
+                  </div>
+                  {paper.work_desc && (
+                    <div style={{ display: 'inline' }}>{paper.work_desc}</div>
+                  )}
+                  <div className="paper-info">{paper.visit_link}</div>
                 </div>
               );
             })}
