@@ -200,6 +200,15 @@ export const Template3: React.FC<Props> = props => {
             })}
           </CardWrapper>
         ) : null}
+        <CardWrapper
+          title={i18n.get('自我介绍')}
+          className="section section-aboutme"
+          color={theme.color}
+        >
+          {aboutme.map((d, idx) => (
+            <div key={`${idx}`}>{d}</div>
+          ))}
+        </CardWrapper>
         {workList?.length ? (
           <CardWrapper
             // title={i18n.get('个人作品')}
@@ -225,15 +234,7 @@ export const Template3: React.FC<Props> = props => {
             })}
           </CardWrapper>
         ) : null}
-        <CardWrapper
-          title={i18n.get('自我介绍')}
-          className="section section-aboutme"
-          color={theme.color}
-        >
-          {aboutme.map((d, idx) => (
-            <div key={`${idx}`}>{d}</div>
-          ))}
-        </CardWrapper>
+
         {/* 专业技能 */}
         {skillList?.length ? (
           <CardWrapper
@@ -268,7 +269,7 @@ export const Template3: React.FC<Props> = props => {
         {awardList?.length ? (
           <CardWrapper
             // title={i18n.get('更多信息')}
-            title={titleNameMap.awardList}
+            title={'获奖经历'}
             className="section section-award"
             color={theme.color}
           >
