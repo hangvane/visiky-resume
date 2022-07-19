@@ -121,14 +121,9 @@ export const Template3: React.FC<Props> = props => {
                 <div className="github">
                   <GithubFilled style={{ color: theme.color, opacity: 0.85 }} />
                   Github:&nbsp;
-                  <span
-                    style={{ cursor: 'pointer' }}
-                    onClick={() => {
-                      window.open('https://' + profile.github);
-                    }}
-                  >
+                  <a href={'https://' + profile.github} target="_blank">
                     {profile.github}
-                  </span>
+                  </a>
                 </div>
               )}
               {profile?.zhihu && (
@@ -153,14 +148,9 @@ export const Template3: React.FC<Props> = props => {
                     style={{ color: theme.color, opacity: 0.85 }}
                   />
                   学术主页:&nbsp;
-                  <span
-                    style={{ cursor: 'pointer' }}
-                    onClick={() => {
-                      window.open('https://' + profile.homepage);
-                    }}
-                  >
+                  <a href={'https://' + profile.homepage} target="_blank">
                     {profile.homepage}
-                  </span>
+                  </a>
                 </div>
               )}
               {profile?.blog && (
@@ -170,14 +160,9 @@ export const Template3: React.FC<Props> = props => {
                     style={{ color: theme.color, opacity: 0.85 }}
                   />
                   技术博客:&nbsp;
-                  <span
-                    style={{ cursor: 'pointer' }}
-                    onClick={() => {
-                      window.open('https://' + profile.blog);
-                    }}
-                  >
+                  <a href={'https://' + profile.blog} target="_blank">
                     {profile.blog}
-                  </span>
+                  </a>
                 </div>
               )}
               {profile?.workExpYear && (
@@ -284,7 +269,11 @@ export const Template3: React.FC<Props> = props => {
                       style={{ color: '#ffc107', marginRight: '8px' }}
                     />
                     <b className="info-name">{work.work_name}</b>
-                    <a className="sub-info" href={work.visit_link}>
+                    <a
+                      className="sub-info"
+                      href={work.visit_link}
+                      target="_blank"
+                    >
                       <IconFont
                         type="icon-link"
                         style={{ color: '#ffc107', marginRight: '2px' }}
@@ -378,8 +367,22 @@ export const Template3: React.FC<Props> = props => {
                     </b>
                   </div>
                   {paper.work_desc && (
-                    <div style={{ display: 'inline' }}>{paper.work_desc}</div>
+                    <div style={{ display: 'inline', marginLeft: '27px' }}>
+                      {paper.work_desc}
+                    </div>
                   )}
+                  {/*&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;<Tag style={{color:'rgba(0, 0, 0, 0.45)'}}>*/}
+                  {/*  {'移动边缘计算'}*/}
+                  {/*</Tag>*/}
+                  {/*<Tag style={{color:'rgba(0, 0, 0, 0.45)'}}>*/}
+                  {/*  {'多臂老虎机'}*/}
+                  {/*</Tag>*/}
+                  {/*<Tag style={{color:'rgba(0, 0, 0, 0.45)'}}>*/}
+                  {/*  {'强化学习'}*/}
+                  {/*</Tag>*/}
+                  {/*<Tag style={{color:'rgba(0, 0, 0, 0.45)'}}>*/}
+                  {/*  {'图神经网络'}*/}
+                  {/*</Tag>*/}
                   <div className="paper-info">{paper.visit_link}</div>
                 </div>
               );
